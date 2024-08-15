@@ -14,9 +14,9 @@ public class EmployeeService {
         this.employees = new ArrayList<>();
     }
 
-    // Методы для управления сотрудниками
 
-    // Шаг 2: Добавление сотрудника по имени и фамилии
+
+
     public void addEmployee(String firstName, String lastName) throws MaxEmployeesReachedException {
         if (employees.size() >= MAX_EMPLOYEES) {
             throw new MaxEmployeesReachedException("Максимальное количество сотрудников уже достигнуто");
@@ -29,7 +29,7 @@ public class EmployeeService {
         employees.add(employee);
     }
 
-    // Шаг 3: Удаление сотрудника по имени и фамилии
+
     public void removeEmployee(String firstName, String lastName) throws EmployeeNotFoundException {
         Employee employeeToRemove = findEmployee(firstName, lastName);
         if (employeeToRemove != null) {
@@ -39,14 +39,14 @@ public class EmployeeService {
         }
     }
 
-    // Шаг 4: Поиск сотрудника по имени и фамилии
+
     public Employee findEmployee(String firstName, String lastName) {
         for (Employee employee : employees) {
             if (employee.getFirstName().equals(firstName) && employee.getLastName().equals(lastName)) {
                 return employee;
             }
         }
-        return null; // Если сотрудник не найден
+        return null;
     }
 }
 
