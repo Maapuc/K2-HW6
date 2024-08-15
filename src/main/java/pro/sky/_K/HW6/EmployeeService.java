@@ -3,12 +3,13 @@ package pro.sky._K.HW6;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 
 @Service
 public class EmployeeService {
-    private static final int MAX_EMPLOYEES = 100; // Максимальное количество сотрудников
-    private List<Employee> employees; // Коллекция для хранения сотрудников
+    private static final int MAX_EMPLOYEES = 100;
+    private List<Employee> employees;
 
     public EmployeeService() {
         this.employees = new ArrayList<>();
@@ -47,6 +48,10 @@ public class EmployeeService {
             }
         }
         return null;
+    }
+
+    public Collection<Employee> getAll() {
+        return employees;
     }
 }
 
