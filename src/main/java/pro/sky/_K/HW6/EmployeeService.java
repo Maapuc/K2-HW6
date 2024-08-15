@@ -9,7 +9,7 @@ import java.util.List;
 @Service
 public class EmployeeService {
     private static final int MAX_EMPLOYEES = 100;
-    private List<Employee> employees;
+    private final List<Employee> employees;
 
     public EmployeeService() {
         this.employees = new ArrayList<>();

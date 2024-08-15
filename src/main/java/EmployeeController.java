@@ -1,6 +1,5 @@
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import pro.sky._K.HW6.Employee;
 import pro.sky._K.HW6.EmployeeService;
@@ -8,7 +7,6 @@ import pro.sky._K.HW6.MaxEmployeesReachedException;
 
 import java.util.Collection;
 
-@ResponseStatus
 @RestController
 @RequestMapping("/Employee")
 public class EmployeeController {
