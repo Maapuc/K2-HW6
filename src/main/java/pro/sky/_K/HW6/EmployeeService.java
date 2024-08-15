@@ -16,8 +16,6 @@ public class EmployeeService {
     }
 
 
-
-
     public void addEmployee(String firstName, String lastName) throws MaxEmployeesReachedException {
         if (employees.size() >= MAX_EMPLOYEES) {
             throw new MaxEmployeesReachedException("Максимальное количество сотрудников уже достигнуто");
