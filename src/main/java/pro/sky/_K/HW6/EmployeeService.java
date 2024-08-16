@@ -7,7 +7,7 @@ import java.util.Collection;
 import java.util.List;
 
 @Service
-public class EmployeeService {
+public class EmployeeService implements EmpoyeeService1 {
     private static final int MAX_EMPLOYEES = 100;
     private final List<Employee> employees;
 
@@ -15,8 +15,8 @@ public class EmployeeService {
         this.employees = new ArrayList<>();
     }
 
-
-    public void addEmployee(String firstName, String lastName) throws MaxEmployeesReachedException {
+    @Override
+    public Employee addEmployee(String firstName, String lastName)  {
         if (employees.size() >= MAX_EMPLOYEES) {
             throw new MaxEmployeesReachedException("Максимальное количество сотрудников уже достигнуто");
         }
@@ -24,32 +24,35 @@ public class EmployeeService {
         if (employees.contains(employee)) {
             throw new EmployeeAlreadyAddedException("Такой сотрудник уже есть");
         }
-        Employee newEmployee = new Employee(firstName, lastName);
         employees.add(employee);
+        return employee;
     }
 
-
-    public void removeEmployee(String firstName, String lastName) throws EmployeeNotFoundException {
+    @Override
+    public Employee removeEmployee(String firstName, String lastName) throws EmployeeNotFoundException {
         Employee employeeToRemove = findEmployee(firstName, lastName);
         if (employeeToRemove != null) {
             employees.remove(employeeToRemove);
         } else {
             throw new EmployeeNotFoundException("Сотрудник не найден");
         }
+        return employeeToRemove;
     }
 
-
+    @Override
     public Employee findEmployee(String firstName, String lastName) {
         for (Employee employee : employees) {
             if (employee.getFirstName().equals(firstName) && employee.getLastName().equals(lastName)) {
                 return employee;
             }
         }
-        return null;
+        throw new EmployeeNotFoundException("Сотрудник не найден");
     }
 
+    @Override
     public Collection<Employee> getAll() {
-        return employees;
+        return List.of();
     }
+
 }
 
